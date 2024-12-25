@@ -6,6 +6,7 @@ interface IInputComponent{
     onchangeText: (text: string) => void
     value?: string
     error?: string | null
+    secureTextEntry?: boolean
 }
 
 export function InputComponent(props: IInputComponent) {
@@ -51,6 +52,7 @@ export function InputComponent(props: IInputComponent) {
                 value={props.value} 
                 placeholder={props.placeholder} 
                 onChangeText={props.onchangeText}
+                secureTextEntry={props.secureTextEntry}
             />
             {props.error && <Text style={styles.error}>{props.error}</Text>}
         </View>
