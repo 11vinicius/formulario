@@ -18,11 +18,10 @@ export default function Edit() {
     const service = userService();
 
     async function fechUser(){
-        const {data} = await service.findById(id)
+        const { data } = await service.findById(id)
         const user = data
-        setUser(user)
-        console.log(user)
         setTimeout(() => {
+            setUser(user)
             setLoading(false)
         },2000)
     }
