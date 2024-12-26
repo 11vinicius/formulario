@@ -94,7 +94,7 @@ export default function Edit() {
                 name="password"
                 defaultValue={user!.password}
                 render={({ field: { onChange, value } } ) => {
-                    return <InputComponent secureTextEntry={true} value={value} placeholder="Digite password " error={errors.password?.message? String(errors.password?.message) :null} onchangeText={onChange} />
+                    return <InputComponent isButtonInObscure={true} secureTextEntry={true} value={value} placeholder="Digite password " error={errors.password?.message? String(errors.password?.message) :null} onchangeText={onChange} />
                 }
             }
             />  
