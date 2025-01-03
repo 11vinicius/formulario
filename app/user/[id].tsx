@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet} from "react-native";
+import { View, StyleSheet} from "react-native";
 import { InputComponent } from "../components/InputComponent";
 import { useForm, Controller } from "react-hook-form"
 import { ButtonComponent } from "../components/ButtonComponent";
@@ -55,22 +55,22 @@ export default function Edit() {
     })
 
     function handleCancel(){
-        route.replace('/')
+        route.replace('/user/home')
     }
     async function onSubmit(data: IUser){ 
-        // const api = await service.update(id, data)
-        console.log(id)
+        const api = await service.update(id, data)
+        console.log(api)
+        // route.replace('/user/home')
     }
 
     if(loading){  
         return (
-         <LoadingComponent/>
+            <LoadingComponent/>
         )
-      }
+    }
 
     return (
         <View style={styles.container}>
-
             <Controller
                 control={control}
                 name="name"

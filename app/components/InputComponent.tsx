@@ -19,7 +19,7 @@ export function InputComponent(props: IInputComponent) {
         constainer:{
             margin: 4,
         },
-        input:{
+        inputArea:{
             padding: 8,
             borderRadius: 10,
             flexDirection: 'row',
@@ -30,6 +30,9 @@ export function InputComponent(props: IInputComponent) {
             shadowOpacity: 0.25,
             shadowRadius: 3.84,
             elevation: 5,
+        },
+        input:{
+            flex:1
         },
         focusInput:{
             borderColor: '#000',
@@ -48,23 +51,24 @@ export function InputComponent(props: IInputComponent) {
 
     return (
         <View style={styles.constainer}>
-            <View style={[styles.input, focus? styles.focusInput : null, props.error? styles.errorInput:null]}>
-            <TextInput 
-                onChangeText={props.onchangeText}
-                value={props.value} 
-                onFocus={() => setFocus(true)} 
-                onBlur={() => setFocus(false)}  
-                placeholder={props.placeholder} 
-                secureTextEntry={obscure}
-            />
-            {props.isButtonInObscure &&
-                <TouchableOpacity onPress={() => setObscure(!obscure)}>
-                    {obscure?   
-                        <Feather name="eye" size={24} color="black" />:
-                        <Feather name="eye-off" size={24} color="black" />
-                    }
-                </TouchableOpacity>
-            }
+            <View style={[styles.inputArea, focus? styles.focusInput : null, props.error? styles.errorInput:null]}>
+                <TextInput 
+                    style={styles.input}
+                    onChangeText={props.onchangeText}
+                    value={props.value} 
+                    onFocus={() => setFocus(true)} 
+                    onBlur={() => setFocus(false)}  
+                    placeholder={props.placeholder} 
+                    secureTextEntry={obscure}
+                />
+                {props.isButtonInObscure &&
+                    <TouchableOpacity onPress={() => setObscure(!obscure)}>
+                        {obscure?   
+                            <Feather name="eye" size={24} color="black" />:
+                            <Feather name="eye-off" size={24} color="black" />
+                        }
+                    </TouchableOpacity>
+                }
             </View>
             {props.error && <Text style={styles.error}>{props.error}</Text>}
         </View>
